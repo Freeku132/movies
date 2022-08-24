@@ -15,6 +15,7 @@
                             <span class="ml-1">85%</span>
                             <span class="mx-2">|</span>
                             <span >Feb 20, 2020</span>
+
                         </div>
                         <div class=" flex items-center text-gray-400">
                             <span>Action,</span>
