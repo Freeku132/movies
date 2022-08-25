@@ -28,5 +28,5 @@
         </div>
     </div>
 </div>
-
+{{--Laptop check--}}
 </x-layout>
