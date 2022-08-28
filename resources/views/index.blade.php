@@ -6,6 +6,8 @@
             @foreach($popularMovies as $movie)
             <div class="mt-8">
                 <a href="#">
+
+
                     <img src="https://image.tmdb.org/t/p/w500/{{$movie['poster_path']}}" alt="parasite" class="hover:opacity-50 transition ease-in-out duration-100"/>
                     <div class="mt-2">
                         <a href="#" class="text-lg mt-2 hover:text-gray-300">{{$movie['title']}} ({{$movie['original_title']}})</a>
