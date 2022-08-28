@@ -3,28 +3,31 @@
     <div class="movie-info border-b border-gray-800">
         <div class="container mx-auto px-4 py-16 flex lg:flex-row md:flex-col md:w-100%">
             <div class="lg:w-1/3">
-            <img src="/images/parasite.jpg" alt="parasite" class=" md:w-full pl-12" >
+            <img src="https://image.tmdb.org/t/p/w500/{{$movie['poster_path']}}" alt="parasite" class=" md:w-full pl-12" >
             </div>
             <div class="ml-24 lg:w-1/2 md:w-full">
-                <h2 class="text-4xl font-semibold">Title</h2>
-                 Details here
+                <h2 class="text-4xl font-semibold">{{$movie['title']}}</h2>
+                <div class="mt-2">
+                    {{$movie['tagline']}}
+                </div>
                 <div class=" flex mt-1 items-center text-gray-400 text-sm">
-                    <span class="ml-1">
-                        <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M17.56 21a1 1 0 01-.46-.11L12 18.22l-5.1 2.67a1 1 0 01-1.45-1.06l1-5.63-4.12-4a1 1 0 01-.25-1 1 1 0 01.81-.68l5.7-.83 2.51-5.13a1 1 0 011.8 0l2.54 5.12 5.7.83a1 1 0 01.81.68 1 1 0 01-.25 1l-4.12 4 1 5.63a1 1 0 01-.4 1 1 1 0 01-.62.18z" data-name="star"/></g></svg>
-                    </span>
-                    <span class="ml-1">85%</span>
+                     <span class="ml-1">
+                            <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M17.56 21a1 1 0 01-.46-.11L12 18.22l-5.1 2.67a1 1 0 01-1.45-1.06l1-5.63-4.12-4a1 1 0 01-.25-1 1 1 0 01.81-.68l5.7-.83 2.51-5.13a1 1 0 011.8 0l2.54 5.12 5.7.83a1 1 0 01.81.68 1 1 0 01-.25 1l-4.12 4 1 5.63a1 1 0 01-.4 1 1 1 0 01-.62.18z" data-name="star"/></g></svg>
+                            </span>
+                    <span class="ml-1">{{$movie['vote_average']*10}} %</span>
                     <span class="mx-2">|</span>
-                    <span >Feb 20, 2020</span>
-                    <span class="mx-2">|</span>
-                    <span>Action,</span>
-                    <span class="ml-1">Thriller,</span>
-                    <span class="mx-1">Comedy</span>
+                    <span >{{\Carbon\Carbon::parse($movie['release_date'])->format('M d, Y')}}</span>
+
+{{--                    @foreach($movie['genres'] as $genre)--}}
+{{--                        <span class="mr-1">--}}
+{{--                                    {{$genres["$genre"]}},--}}
+{{--                            {{$genres->get($genre)}}@if(!$loop->last), @endif--}}
+{{--                                </span>--}}
+{{--                    @endforeach--}}
                 </div>
 
                 <p class="text-gray-300 mt-8 ">
-                    Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-                    Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
-                    Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem Lorem
+                   {{$movie['overview']}}
                 </p>
 
                 <div class="mt-12">
