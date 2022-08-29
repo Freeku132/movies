@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li class="lg:ml-16 md:ml-16 ">
-                <a href="#" class="hover:text-gray-500">
+                <a href="/" class="hover:text-gray-500">
                     Movies
                 </a>
             </li>
