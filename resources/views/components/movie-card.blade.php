@@ -14,12 +14,9 @@
 
             </div>
             <div class=" flex items-center text-gray-400 text-xs">
-                @foreach($movie['genre_ids'] as $genre)
-                    <span class="mr-1">
-{{--                                    {{$genres["$genre"]}},--}}
-                        {{$genres->get($genre)}}@if(!$loop->last), @endif
-                                </span>
-                @endforeach
+
+                @foreach($movie['genre_ids'] as $genre){{$genres->get($genre)}}@if(!$loop->last),@endif @endforeach
+                </span>
             </div>
         </div>
     </a>
