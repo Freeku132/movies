@@ -6,6 +6,8 @@
         placeholder="Search"
         @focus="isOpen = true"
         @keydown.escape.window="isOpen = false"
+        @keydown.shift.tab="isOpen = false"
+        @keydown="isOpen = true"
     >
     <div class="absolute top-0">
         <svg class="fill-current w-4 text-gray-500 mt-2 ml-2" viewBox="0 0 24 24">
@@ -19,7 +21,7 @@
     @if(strlen($search) >= 2)
     <div
         class="absolute bg-gray-800 rounded-xl w-full mt-2 z-50"
-        x-show="isOpen"
+        x-show.transition.opacity="isOpen"
 
     >
         <ul>
@@ -40,7 +42,10 @@
                     </li>
                 @elseif($loop->last)
                     <li class="">
-                        <a href="{{route('movies.show', $result['id'])}}" @keydown.tab="isOpen = false" class="block hover:bg-gray-700 rounded-b-xl p-2 text-sm flex itmes-center">
+                        <a href="{{route('movies.show', $result['id'])}}"
+                           @keydown.tab="isOpen = false"
+                           @keydown.shift.tab="isOpen = true"
+                           class="block hover:bg-gray-700 rounded-b-xl p-2 text-sm flex itmes-center">
                             @if($result['poster_path'])
                                 <img src="https://image.tmdb.org/t/p/w500/{{$result['poster_path']}}" alt="{{$result['title']}}" width="60" height="60"/>
                             @else
