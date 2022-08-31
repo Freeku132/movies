@@ -26,9 +26,9 @@ class MoviesController extends Controller
         $genres = collect($genresArray)->mapWithKeys( function ($genre){
             return [$genre['id'] => $genre['name']];
         });
-        dump($popularMovies);
-        dump($genres);
-        dump($nowPlayingMovies);
+        //dump($popularMovies);
+        //dump($genres);
+        //dump($nowPlayingMovies);
 
         return view('index', [
             'popularMovies' => $popularMovies,
@@ -78,9 +78,9 @@ class MoviesController extends Controller
         });
 
 
-        dump($movie);
-        dump($genres);
-        dump($movie['videos']['results'][0]);
+        //dump($movie);
+        //dump($genres);
+        //dump($movie['videos']['results'][0]);
 
 
 
