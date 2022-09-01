@@ -13,15 +13,15 @@
                      <span class="ml-1">
                             <svg class="fill-current text-orange-500 w-4" viewBox="0 0 24 24"><g data-name="Layer 2"><path d="M17.56 21a1 1 0 01-.46-.11L12 18.22l-5.1 2.67a1 1 0 01-1.45-1.06l1-5.63-4.12-4a1 1 0 01-.25-1 1 1 0 01.81-.68l5.7-.83 2.51-5.13a1 1 0 011.8 0l2.54 5.12 5.7.83a1 1 0 01.81.68 1 1 0 01-.25 1l-4.12 4 1 5.63a1 1 0 01-.4 1 1 1 0 01-.62.18z" data-name="star"/></g></svg>
                             </span>
-                    <span class="ml-1">{{$movie['vote_average']*10 . '%'}}</span>
+                    <span class="ml-1">{{$movie['vote_average']}}</span>
                     <span class="mx-2">|</span>
                     <span >{{\Carbon\Carbon::parse($movie['release_date'])->format('M d, Y')}} </span>
                     <span class="mx-2">|</span>
-                    @foreach($movie['genres'] as $genre)
+{{--                    @foreach($movie['genres'] as $genre)--}}
                         <span class="mr-1">
-                                    {{$genre['name']}}@if(!$loop->last), @endif
+                                    {{$movie['genres']}}
                                 </span>
-                    @endforeach
+{{--                    @endforeach--}}
                 </div>
 
                 <p class="text-gray-300 mt-8 ">
@@ -34,7 +34,8 @@
                         Featured Cast
                     </h4>
                     <div class="mt-4 flex">
-                        @foreach(array_splice($movie['credits']['crew'], 0, 3) as $crew)
+{{--                        @foreach(array_splice($movie['credits']['crew'], 0, 3) as $crew)--}}
+                        @foreach($movie['crew'] as $crew)
                         <div class="mr-6">
                             <div>{{$crew['name']}}</div>
                             <div class="text-sm text-gray-400">{{$crew['job']}}</div>
@@ -88,7 +89,8 @@
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-16 ">
-                @foreach(array_splice($movie['credits']['cast'], 0, 10) as $cast)
+{{--                @foreach(array_splice($movie['credits']['cast'], 0, 10) as $cast)--}}
+                    @foreach($movie['cast'] as $cast)
                 <div class="mt-8">
                     <a href="#">
                         <img src="https://image.tmdb.org/t/p/w500//{{$cast['profile_path']}}" alt="{{$cast['name']}}" class="hover:opacity-50 transition ease-in-out duration-100"/>
@@ -110,7 +112,8 @@
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold mb-12">Images</h2>
             <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-16 ">
-                @foreach(array_splice($movie['images']['backdrops'], 0, 15) as $image)
+{{--                @foreach(array_splice($movie['images']['backdrops'], 0, 15) as $image)--}}
+                    @foreach($movie['images'] as $image)
                 <div class="mt-8">
                     <a
                         @click.prevent="
