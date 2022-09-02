@@ -92,10 +92,10 @@
 {{--                @foreach(array_splice($movie['credits']['cast'], 0, 10) as $cast)--}}
                     @foreach($movie['cast'] as $cast)
                 <div class="mt-8">
-                    <a href="#">
+                    <a href="{{route('actors.show', $cast['id'])}}">
                         <img src="https://image.tmdb.org/t/p/w500//{{$cast['profile_path']}}" alt="{{$cast['name']}}" class="hover:opacity-50 transition ease-in-out duration-100"/>
                         <div class="mt-2">
-                            <a href="#" class="text-lg mt-2 hover:text-gray-300">{{$cast['original_name']}}</a>
+                            <a href="{{route('actors.show', $cast['id'])}}" class="text-lg mt-2 hover:text-gray-300">{{$cast['original_name']}}</a>
                             <div class="mt-1 flex items-center text-gray-400 text-sm">
                                 <span class="ml-1">{{$cast['character']}}</span>
                             </div>

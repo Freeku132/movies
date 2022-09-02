@@ -1,7 +1,7 @@
 {{--@props(['movie', 'genres'])--}}
 <div class="mt-8">
     <a href="{{route('movies.show' , $movie['id'])}}">
-        <img src="{{$movie['poster_path']}}" alt="parasite" class="hover:opacity-50 transition ease-in-out duration-100"/>
+        <img src="{{$movie['poster_path']}}" alt="poster_img" class="hover:opacity-50 transition ease-in-out duration-100"/>
         <div class="mt-2">
             <a href="{{route('movies.show' , $movie['id'])}}" class="text-lg mt-2 hover:text-gray-300">{{$movie['title']}} ({{$movie['original_title']}})</a>
             <div class="mt-1 flex items-center text-gray-400 text-sm">

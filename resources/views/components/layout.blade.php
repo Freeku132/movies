@@ -38,7 +38,7 @@
                 </a>
             </li>
             <li class=" lg:ml-6 md:ml-6">
-                <a href="#" class="hover:text-gray-500 sm:mb-4">
+                <a href="{{route('actors.index')}}" class="hover:text-gray-500 sm:mb-4">
                     Actors
                 </a>
             </li>
