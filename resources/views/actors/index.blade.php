@@ -1,7 +1,7 @@
 <x-layout>
     <div class="container mx-auto px-4 pt-16">
         <div class="popular-actors">
-            <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold">POPULAR ACTORS</h2>
+            <h2 class="uppercase tracking-wider text-orange-500 text-lg font-semibold">Popular Actors</h2>
             <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-16 ">
                     @foreach($popularActors as $actor)
                     <div class="actor mt-8">
