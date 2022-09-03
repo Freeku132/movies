@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="lg:ml-6 md:ml-6">
-                <a href="#" class="hover:text-gray-500">
+                <a href="{{route('tv.index')}}" class="hover:text-gray-500">
                     TV Shows
                 </a>
             </li>
