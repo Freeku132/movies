@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="movie-info border-b border-gray-800">
+    <div class="tv-info border-b border-gray-800">
         <div class="container mx-auto px-4 py-16 flex lg:flex-row md:flex-col md:w-100%">
             <div class="lg:w-1/3">
                 <img src="https://image.tmdb.org/t/p/w500/{{$tvShow['poster_path']}}" alt="{{$tvShow['name']}}"
@@ -20,7 +20,6 @@
                     <span class="mx-2">|</span>
                     <span>{{\Carbon\Carbon::parse($tvShow['first_air_date'])->format('M d, Y')}} </span>
                     <span class="mx-2">|</span>
-                    {{--                    @foreach($movie['genres'] as $genre)--}}
                     <span class="mr-1">
                                     {{$tvShow['genres']}}
                                 </span>
@@ -32,18 +31,15 @@
                 </p>
 
                 <div class="mt-12">
-
-                    <h4 class="text-white font-semibold ">
-                        Featured Cast
-                    </h4>
+                    @if($tvShow['created_by'])
                     <div class="mt-4 flex">
-                        {{--                        @foreach(array_splice($movie['credits']['crew'], 0, 3) as $crew)--}}
-                        @foreach($tvShow['crew'] as $crew)
+                        @foreach($tvShow['created_by'] as $crew)
                             <div class="mr-6">
                                 <div>{{$crew['name']}}</div>
-                                <div class="text-sm text-gray-400">{{$crew['job']}}</div>
+                                <div class="text-sm text-gray-400">Creator</div>
                             </div>
                         @endforeach
+                        @endif
 
                     </div>
                 </div>
@@ -96,11 +92,10 @@
         </div>
     </div>
 
-    <div class="movie-cast border-b border-gray-500">
+    <div class="tv-cast border-b border-gray-500">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold">Cast</h2>
             <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-16 ">
-                {{--                @foreach(array_splice($movie['credits']['cast'], 0, 10) as $cast)--}}
                 @foreach($tvShow['cast'] as $cast)
                     <div class="mt-8">
                         <a href="{{route('actors.show', $cast['id'])}}">
@@ -121,11 +116,10 @@
 
         </div>
     </div>
-    <div class="movie-images border-b border-gray-500" x-data="{isOpen: false, image: ''}">
+    <div class="tv-images border-b border-gray-500" x-data="{isOpen: false, image: ''}">
         <div class="container mx-auto px-4 py-16">
             <h2 class="text-4xl font-semibold mb-12">Images</h2>
             <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-16 ">
-                {{--                @foreach(array_splice($movie['images']['backdrops'], 0, 15) as $image)--}}
                 @foreach($tvShow['images'] as $image)
                     <div class="mt-8">
                         <a
@@ -134,7 +128,7 @@
                         image = 'https://image.tmdb.org/t/p/original/{{$image['file_path']}}'
                         "
                             href="#">
-                            <img src="https://image.tmdb.org/t/p/w500/{{$image['file_path']}}" alt="movie_image"
+                            <img src="https://image.tmdb.org/t/p/w500/{{$image['file_path']}}" alt="tv_image"
                                  class="hover:opacity-50 transition ease-in-out duration-100"/>
                         </a>
                     </div>

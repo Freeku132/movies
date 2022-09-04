@@ -41,10 +41,29 @@ class ActorViewModel extends ViewModel
     {
         $castMovies = collect($this->credits)->get('cast');
 
-        return collect($castMovies)->where('media_type' , 'movie')->sortByDesc('popularity')->take(5)
+        return collect($castMovies)->sortByDesc('popularity')->take(5)
             ->map(function ($movie){
+
+                if (isset($movie['title']))
+                {
+                    $title = $movie['title'];
+                } elseif (isset($movie['name'])){
+                    $title = $movie['name'];
+                } else{
+                    $title = 'Untitled';
+                }
+
+                if (isset($movie['title']))
+                {
+                    $route = route('movies.show', $movie['id']);
+                } else {
+                    $route = route('tv.show', $movie['id']);
+                }
+
                 return collect($movie)->merge([
                     'poster_path' => $movie['poster_path'] ? 'https://image.tmdb.org/t/p/w500/'.$movie['poster_path'] : null,
+                    'title' => $title,
+                    'route' => $route,
                 ]);
             })
             ->dump();

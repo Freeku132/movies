@@ -40,7 +40,8 @@ class TvShowViewModel extends ViewModel
             'overview',
             'crew',
             'cast',
-            'images'
+            'images',
+            'created_by'
         ])->dump();
 
     }
